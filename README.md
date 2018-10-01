@@ -1,5 +1,8 @@
 # README
 
+This is an API application that calculates calorie intake for 3 daily meals
+and snacks.
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
