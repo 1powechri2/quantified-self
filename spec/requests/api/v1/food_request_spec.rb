@@ -11,9 +11,12 @@ describe 'foods api endpoint' do
 
       foods = JSON.parse(response.body)
 
+      expect(foods.count).to eq(3)
       expect(foods.first).to have_value(list.first.id)
       expect(foods.first).to have_value(list.first.name)
       expect(foods.first).to have_value(list.first.calories)
+      expect(foods.first).to_not have_value(list.first.created_at)
+      expect(foods.first).to_not have_value(list.first.updated_at)
     end
   end
 end
