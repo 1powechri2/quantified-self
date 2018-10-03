@@ -16,6 +16,16 @@ Shoulda::Matchers.configure do |config|
     with.library :active_model
   end
 end
+DatabaseCleaner.strategy = :truncation
+RSpec.configure do |c|
+  c.before(:all) do
+    DatabaseCleaner.clean
+  end
+  c.after(:each) do
+    DatabaseCleaner.clean
+  end
+  c.include Capybara::DSL
+end
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
