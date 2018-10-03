@@ -1,21 +1,24 @@
-class Api::V1::FoodsController < ActionController::Base
+class Api::V1::FoodsController < ActionController::API
   def index
     render json: Food.all
   end
-  
+
   def show
   food = Food.find_by_id(params[:id])
     if food
       render json: food
     else
-      render file: 'public/404.html', status: 404
+      render status: 404
     end
   end
 
   def create
     food = Food.create(food_params)
-    binding.pry
-    render json: food
+    if food.id != nil
+      render json: food
+    else
+      render status: 400
+    end
   end
 
   private
