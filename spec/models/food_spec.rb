@@ -9,4 +9,7 @@ RSpec.describe Food, type: :model do
     expect(test_food.name).to eq(food.name)
     expect(test_food.calories).to eq(food.calories)
   end
+  context 'validations' do
+    it {should validate_uniqueness_of(:name)}
+  end
 end
