@@ -12,7 +12,7 @@ describe 'foods api endpoint' do
       expect(response).to be_successful
 
       foods = JSON.parse(response.body)
-      
+
       expect(foods.count).to eq(3)
       expect(foods.first).to have_value(food1.id)
       expect(foods.first).to have_value(food1.name)
@@ -40,7 +40,9 @@ describe 'foods api endpoint' do
 
       get "/api/v1/foods/#{food.id + 2}"
 
-      expect(response.status).to eq(404)
+      food_json = JSON.parse(response.body, symbolize_names: true)
+      
+      expect(food_json[:status]).to eq(404)
     end
   end
 end

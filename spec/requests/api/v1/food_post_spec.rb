@@ -15,7 +15,11 @@ describe 'post to create a new food' do
     it 'renders 400 if error' do
       post '/api/v1/foods', params: { 'food': { 'name': 'twizzlers' } }
 
-      expect(response.status).to eq(400)
+      expect(response).to be_successful
+
+      food = JSON.parse(response.body, symbolize_names: true)
+
+      expect(food[:status]).to eq(400)
     end
   end
 end

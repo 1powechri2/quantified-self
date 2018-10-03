@@ -8,7 +8,7 @@ class Api::V1::FoodsController < ActionController::API
     if food
       render json: food
     else
-      render status: 404
+      render json: {status: 404}
     end
   end
 
@@ -17,7 +17,17 @@ class Api::V1::FoodsController < ActionController::API
     if food.id != nil
       render json: food
     else
-      render status: 400
+      render json: {status: 400}
+    end
+  end
+
+  def update
+    food = Food.find(params[:id])
+    if food_params[:name] && food_params[:calories] 
+      food.update(food_params)
+      render json: food
+    else
+      render json: {status: 400}
     end
   end
 
