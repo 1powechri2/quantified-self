@@ -36,9 +36,52 @@ The index will have the following format
     "id": 2,
     "name": "chocolate",
     "calories": 50
-}]
+} ]
 
 ```
 
+```
+GET /api/v1/foods/:id
+```
 
-* ...
+Returns a specific food object with the specific :id passed in,
+if the :id is invalid a 404 JSON is returned
+
+```
+POST /api/v1/foods
+```
+
+Creates a new food in the database
+
+the new food needs to be posted in the parameters instead of the body of the post request
+in this format
+
+```
+{ "food": { "name": "Name of food here", "calories": "Calories here"} }
+```
+
+If the food item is successfully created, the food item will be returned. If the food
+item is not successfully created a 400 JSON is returned. Name and calories are required fields.
+
+```
+PATCH /api/v1/foods/:id
+```
+
+Updates an existing food item
+
+just like post the new data needs to be sent by way of parameters in an identical
+format like this
+
+```
+{ "food": { "name": "Mint", "calories": "14"} }
+```
+
+If food item is successfully updated it will be returned. If the food item
+is not successfully updated, a 400 JSON will be returned.
+
+```
+DELETE /api/v1/foods/:id
+```
+
+Deletes the food item with the :id passed in,
+if successful a 204 JSON is returned. If the food can’t be found by :id a 404 JSON is returned.
