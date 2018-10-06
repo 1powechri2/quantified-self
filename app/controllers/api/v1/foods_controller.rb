@@ -23,11 +23,21 @@ class Api::V1::FoodsController < ActionController::API
 
   def update
     food = Food.find(params[:id])
-    if food_params[:name] && food_params[:calories] 
+    if food_params[:name] && food_params[:calories]
       food.update(food_params)
       render json: food
     else
       render json: {status: 400}
+    end
+  end
+
+  def destroy
+    food = Food.find_by_id(params[:id])
+    if food
+      Food.destroy(food.id)
+      render json: {status: 204}
+    else
+      render json: {status: 404}
     end
   end
 

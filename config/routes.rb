@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       post '/foods', to: 'foods#create'
       get '/foods/:id', to: 'foods#show'
       patch '/foods/:id', to: 'foods#update'
+      delete '/foods/:id', to: 'foods#destroy'
     end
   end
 end
