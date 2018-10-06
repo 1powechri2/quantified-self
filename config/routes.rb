@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get '/foods/:id', to: 'foods#show'
       patch '/foods/:id', to: 'foods#update'
       delete '/foods/:id', to: 'foods#destroy'
+      get '/meals', to: 'meals#index'
     end
   end
 end
