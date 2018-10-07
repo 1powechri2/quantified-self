@@ -22,4 +22,20 @@ class Api::V1::MealsController < ApplicationController
       render json: {'status' => 404}, status: 404
     end
   end
+
+  def delete
+    meal = Meal.find_by_id(params[:meal_id])
+    food = Food.find_by_id(params[:id])
+    if meal && food
+    meal_food = MealFood.where(meal_id: meal.id, food_id: food.id)
+      if meal_food.first != nil
+        meal_food.destroy_all
+        render json: {"message" => "Successfully removed #{food.name} from #{meal.name}"}, status: 201
+      else
+        render json: {'status' => 404}, status: 404
+      end
+    else
+      render json: {'status' => 404}, status: 404
+    end
+  end
 end
