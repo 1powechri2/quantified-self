@@ -49,11 +49,7 @@ describe 'the meals index page' do
     it 'returns a 404 json error if meal cannot be found' do
       get "/api/v1/meals/500/foods"
 
-      expect(response).to be_successful
-
-      meals_json = JSON.parse(response.body, symbolize_names: true)
-
-      expect(meals_json[:status]).to eq(404)
+      expect(response.status).to eq(404)
     end
   end
 end
