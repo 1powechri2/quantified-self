@@ -14,6 +14,7 @@ describe 'posting food to meal' do
 
       expect(resp_json).to eq({ "message" => "Successfully added #{food.name} to #{meal.name}" })
       expect(meal.foods.first).to eq(food)
+      expect(Food.find(food.id).timesEaten).to eq(1)
     end
     it 'returns a 404 if post is unsuccesful' do
       food = create(:food)

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get '/meals/:id/foods', to: 'meals#show'
       post '/meals/:meal_id/foods/:id', to: 'meals#create'
       delete '/meals/:meal_id/foods/:id', to: 'meals#delete'
+      get '/favorite_foods', to: 'favorite_foods#index'
     end
   end
 end
