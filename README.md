@@ -8,7 +8,7 @@ and snacks. All endpoint are JSON. Endpoints include a food index, which shows d
 show page that displays a specific food with name and calories, a post to create new foods,
 a patch to update preexisting food items and a delete to destroy preexisting food items.
 
-site url: https://murmuring-temple-61451.herokuapp.com
+deployed site url: https://murmuring-temple-61451.herokuapp.com
 
 In order to use the api locally perform these commands in your shell
 ```
